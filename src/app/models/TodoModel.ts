@@ -2,7 +2,9 @@
 
 export interface TodoModel {
   id: number;
-  text: string;
+  gid: number;
+  lot: number;
+  price: number;
   completed: boolean;
 }
 

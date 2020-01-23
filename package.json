@@ -13,7 +13,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --hot --progress --color --port 3000 --open",
@@ -25,7 +25,6 @@
     "@babel/core": "^7.2.2",
     "@types/classnames": "^2.2.7",
     "@types/history": "^4.7.2",
-    "@types/node": "^10.12.18",
     "@types/react": "^16.8.2",
     "@types/react-dom": "^16.8.0",
     "@types/react-redux": "^7.0.0",

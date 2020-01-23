@@ -32,7 +32,7 @@ export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
     if (text.length === 0) {
       this.props.deleteTodo(id);
     } else {
-      this.props.editTodo({ id, text });
+      //this.props.editTodo({ id, 0 });
     }
     this.setState({ editing: false });
   }
@@ -44,7 +44,7 @@ export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
     if (this.state.editing) {
       element = (
         <TodoTextInput
-          text={todo.text}
+          text={`${todo.lot}`}
           editing={this.state.editing}
           onSave={(text) => todo.id && this.handleSave(todo.id, text)}
         />
@@ -58,7 +58,7 @@ export class TodoItem extends React.Component<TodoItem.Props, TodoItem.State> {
             checked={todo.completed}
             onChange={() => todo.id && completeTodo(todo.id)}
           />
-          <label onDoubleClick={() => this.handleDoubleClick()}>{todo.text}</label>
+          <label onDoubleClick={() => this.handleDoubleClick()}>{`${todo.lot}`}</label>
           <button
             className={style.destroy}
             onClick={() => {
