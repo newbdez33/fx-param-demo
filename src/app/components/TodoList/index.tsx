@@ -15,7 +15,13 @@ export class TodoList extends React.Component<TodoList.Props> {
         let list = [];
         for (let i = 0; i < this.props.todos.length; i++) {
             let l = this.props.todos[i];
-            list.push(<div>{this.symbolGid(l.gid)} {l.lot} ✕ {l.price}</div>);
+            if ( l.id == 1 ) {
+                list.push(<div key={`${l.gid}-0`}>─────────────────</div>);
+            }
+            list.push(<div key={`${l.gid}-${l.id}`}>{this.symbolGid(l.id)} {l.lot} ✕ {l.price}</div>);
+        }
+        if ( list.length > 0 ) {
+            list.push(<div key={`0-0`}>─────────────────</div>);
         }
         return list;
     }
@@ -42,21 +48,6 @@ export class TodoList extends React.Component<TodoList.Props> {
                 return '➈';
         }
         return '';
-    }
-
-    renderToggleAll(): JSX.Element | void {
-        const { todos, actions } = this.props;
-        if (todos.length > 0) {
-            const hasIncompleted = todos.some((todo) => !todo.completed);
-            return (
-                <input
-                    className={style.toggleAll}
-                    type="checkbox"
-                    checked={hasIncompleted}
-                    onChange={actions.completeAll}
-                />
-            );
-        }
     }
 
     render() {

@@ -31,20 +31,21 @@ export class Header extends React.Component<Header.Props> {
     }
     console.log(v)
     let startLot:number = Number(v)
-    let startPrice = 1.11451
+    var startPrice = 1.11452
     let basePoint = 0.00001
     for ( var gid = 1; gid <= 8; gid++ ) {
       let count = gid+1
       for ( var i = 1; i <= count; i++ ) {
-        let p = startPrice + basePoint * Math.pow(2, i - 1) - basePoint
+        startPrice -= basePoint * Math.pow(2, i-1)
         list.push({
           gid:gid,
           id:i,
-          price:this.fixPrice(p, 5),
+          price:this.fixPrice(startPrice, 5),
           lot:Math.pow(2, i-1) * startLot,
           completed:false
         })
       }
+      
     }
     this.props.addTodo(list);
   }
